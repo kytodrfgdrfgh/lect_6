@@ -1,0 +1,182 @@
+\documentclass[14pt,a4paper,oneside]{extarticle}
+\usepackage{amsmath}\usepackage{amsfonts}\usepackage{amssymb}\usepackage{pgfplots}
+\usepackage{setspace}\usepackage{mathtools}\usepackage{tikz}\usetikzlibrary{arrows}
+\usepackage[left=3cm,right=1cm, top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{enumitem}
+\makeatletter\AddEnumerateCounter{\asbuk}{\russian@alph}{щ}\makeatother
+\DeclareMathOperator{\sinc}{sinc}\pgfplotsset{compat=1.18}\usepackage{setspace}
+% \onehalfspacing
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\pict}{\[\tb{Картинка}\]}
+\newcommand{\fo}{\[\tb{Формула}\]}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit, automata}
+\usepackage{bookmark}
+\usepackage{blindtext}
+% \setcounter{secnumdepth}{0}
+\usepackage{graphicx}
+\graphicspath{ {./imgs/} }
+\usepackage{relsize}
+\usepackage{indentfirst}
+\usepackage{float}
+% \usepackage{sectsty}
+
+% \sectionfont{\large}
+% \subsectionfont{\normalsize}
+% \subsubsectionfont{\normalsize}
+% \paragraphfont{\normalsize}
+
+\usepackage{amsthm}
+\newtheorem*{theorem}{Теорема}
+% \makeatletter
+% \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+% \makeatother
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
+
+\usepackage{ragged2e}
+
+\setlength{\RaggedRightParindent}{\parindent}
+
+\newcommand{\pic}[3]{
+	\begin{figure}[#1]
+		\begin{center}
+			\includegraphics[width=#2]{imgs/#3}
+		\end{center}
+		% \vspace{-5mm}\caption{#4}\label{fig:#5}
+	\end{figure}
+}
+
+\begin{document}
+
+\RaggedRight
+
+% \emergencystretch 3em
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+
+        \Huge
+        \textbf{Организация и планирование производства}
+
+        \vspace{0.5cm}
+        \LARGE
+        Преподаватель: Постникова Елена Сергеевна
+
+        postnikova.el@bmstu.ru
+
+        postnikova.el@yandex.ru
+
+        8-916-733-16-46
+
+
+        \vspace{1.5cm}
+
+        Кафедра: ИБМ-2
+
+        Каб. 506
+
+        \vfill
+
+        Чекановский Сергей\\
+        РЛ1-102
+
+        \vspace{0.8cm}
+
+        % \includegraphics[width=0.4\textwidth]{university}
+
+        \Large
+        МГТУ им. Н.Э. Баумана
+
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\clearpage
+
+\section{Лекция 1}
+
+\subsection{Историческая справка}
+
+Советов и Платонов разработали русскую школу обучения механическим мастерствам:
+
+\begin{itemize}
+    \item Токарные искусства по дереву
+    \item Столярные
+    \item Кузнечные
+    \item Токарные по металлу
+    \item Слесарные
+    \item Модельные
+\end{itemize}
+
+В качестве пособий - модели реальных инструментов в увеличенном масштабе и коллекции измерительных инструментов с указанием областей и способов их применения.
+
+Заслуга Советова и Платонова заключается в том что они смогли выделить элементарные последовательности работ для каждого вида мастерства.
+
+Не выделили технологическую операцию - не хватило одного шага для того чтобы стать первыми авторами организации производства.
+
+Фредерик Тейлор:
+
+\begin{itemize}
+    \item Отделил подготовительные работы от выполнения операций
+    \item Дифференцировал процесс труда - как правило 1 операция на рабочего
+    \item Ввел хронометраж для устранения лишних приемов операции
+    \item Интенсифицировал труд рабочих, введя сдельно-дифференциальную оплату труда. При выплонении нормы - оплана по высокой шкале, при невыполнении - по низкой. Норма устанавивалась на основе труда лучших рабочих.
+    \item Ввел аппарат функциональных руководитлей, мастеров и инструкторов
+    \item Ввел конвейер
+\end{itemize}
+
+Хронометраж - метод нормирования оперативного времени выполнения операции.
+
+\[t_\text{оп}=t_o+t_e\]
+
+Конвейер Форда - идея Тейлора.
+
+Генри Форд:
+
+\begin{itemize}
+    \item Максимально разделил труд рабочих, в результате чего все операции могли выполняться рабочими с низкой квалификацией при исключительно напряженном темпе работы, который соблюдался механическими регуляторами ритма.
+    \item Организовал массовое производства и предметно замкнутые участки и линии с прямоточным характером движения.
+    \item Были стандартизованы все факторы производства такие как сырье, оборудование, инструмент, технологические режимы, трудовые приемы.
+\end{itemize}
+
+Карл Адамецкий разработал движение деталей по операциям и формулы расчета производственного цикла.
+
+Иейс - учет человеческого фактора, влияния условия труда на производительность.
+
+Д. Макгрегор - теория человеческих отношений.
+
+Уолкер, Келли, Малькольм - СПУ. Для планирования инновационных процессов, построена на вероятностных оценках времени работ. Можно использовать и в производстве.
+
+Семенов - аналитическое нормирование труда.
+
+Каценбоген - орагнизация поточного производства.
+
+Орентлихтер, Иоффе - справочные нормативы.
+
+Митрофанов - организация группового производства.
+
+\subsection{Органиазция производственных процессов}
+
+\subsubsection{Общая и производственная структура предприятия}
+
+\pic{H}{\textwidth}{1}
+
+Состав производственных звеньев, органов управленияи организации обслуживания работников, их количество, их количество, величина и соотношение занятых ими площадей, численности работников и пропускной способности представляют общую структуру предприятия.
+
+Производственные звенья: цеха и участки, где изготавливается основная продукция.
+
+Вспомогательное производство: техоснастка, тара.
+
+Хозяйство и цеха оказывают услуги для основных и вспомогательных звеньев (например транспорт).
+
+Отличия цеха от хозяйства - наличие хотя бы одного станка (участка производства). Если оказываем только услуги - хозяйство.
+
+\end{document}
