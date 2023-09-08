@@ -1,0 +1,185 @@
+\documentclass[14pt,a4paper,oneside]{extarticle}
+\usepackage{amsmath}\usepackage{amsfonts}\usepackage{amssymb}\usepackage{pgfplots}
+\usepackage{setspace}\usepackage{mathtools}\usepackage{tikz}\usetikzlibrary{arrows}
+\usepackage[left=3cm,right=1cm, top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{enumitem}
+\makeatletter\AddEnumerateCounter{\asbuk}{\russian@alph}{щ}\makeatother
+\DeclareMathOperator{\sinc}{sinc}\pgfplotsset{compat=1.18}\usepackage{setspace}
+% \onehalfspacing
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\pict}{\[\tb{Картинка}\]}
+\newcommand{\fo}{\[\tb{Формула}\]}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit, automata}
+\usepackage{bookmark}
+\usepackage{blindtext}
+% \setcounter{secnumdepth}{0}
+\usepackage{graphicx}
+\graphicspath{ {./imgs/} }
+\usepackage{relsize}
+\usepackage{indentfirst}
+\usepackage{float}
+% \usepackage{sectsty}
+
+% \sectionfont{\large}
+% \subsectionfont{\normalsize}
+% \subsubsectionfont{\normalsize}
+% \paragraphfont{\normalsize}
+
+\usepackage{amsthm}
+\newtheorem*{theorem}{Теорема}
+% \makeatletter
+% \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+% \makeatother
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
+
+\usepackage{ragged2e}
+
+% \setlength{\RaggedRightParindent}{\parindent}
+
+\newcommand{\pic}[3]{
+	\begin{figure}[#1]
+		\begin{center}
+			\includegraphics[width=#2]{imgs/#3}
+		\end{center}
+		% \vspace{-5mm}\caption{#4}\label{fig:#5}
+	\end{figure}
+}
+
+\newlength{\normalparindent}
+\setlength{\normalparindent}{\parindent}
+\raggedright
+\setlength{\parindent}{\normalparindent}
+
+\begin{document}
+
+% \RaggedRight
+
+% \emergencystretch 3em
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+
+        \Huge
+        \textbf{Организация и планирование производства}
+        \textbf{Семинары}
+
+        \vspace{0.5cm}
+        \LARGE
+        Преподаватель: Постникова Елена Сергеевна
+
+        postnikova.el@bmstu.ru
+
+        postnikova.el@yandex.ru
+
+        8-916-733-16-46
+
+
+        \vspace{1.5cm}
+
+        Кафедра: ИБМ-2
+
+        Каб. 506
+
+        \vfill
+
+        Чекановский Сергей\\
+        РЛ1-112
+
+        \vspace{0.8cm}
+
+        % \includegraphics[width=0.4\textwidth]{university}
+
+        \Large
+        МГТУ им. Н.Э. Баумана
+
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\clearpage
+
+\section{Семинар 1}
+
+\textbf{ПРОПУСК}
+
+% \begin{equation*}
+%     \text{Производственный процесс}=\text{Технологический процесс}+\\
+%     +\underbrace{$\text{транспорт. м-ду раб местами}$}
+% \end{equation*}
+
+
+\textbf{Технологический процесс} - это совокупность и последовательность выполнения технологических операций.
+
+Верменными характеристиками простого производственного процесса являются производственный цикл и технологический цикл.
+
+\[T_\text{пр}=T_\text{техн}+\sum_{i=1}^m t_\text{м.о. i}+T_e\]
+
+Где m - число операций.
+
+Предметы труда могут передаваться с одной операции на другую поштучно или партиями.
+
+\textbf{Производственный цикл} - это интервал времени от запуска исходных предметов труда до выпуска готовой продукции.
+
+\textbf{Технологический цикл} - суммарное время выплонения всех технологических операций над деталью или патрией деталей.
+
+При поштучной длительность технологического цикла рассчитывается как сумма времен выполнений всех операций технологического процесса. Время выполнения операции над одним предметом труда:
+
+\[T\text{техн}=\sum_{i=1}^{m}\frac{t_i}{c_i}\]
+
+$t_i$ - норма времени выполнения операции - технически и экономически обоснованное минимальное время выполнения i-той операции над одним предметом труда.
+
+$c_i$ - число рабочих мест.
+
+Норма времени может быть определена как штучная норма времени (производственная) или штучно- калькуляционная (полная).
+
+\begin{gather*}
+        t_\text{шт}=t_\text{оп}+\sum t_\text{перерыв}=t_\text{осн приемов опер}+t_\text{вспом пр оп}+ t_\text{пер техобсл}+\\+t_\text{пер орг обсл}+t_\text{пер переналадки Технол Сист}+t_\text{пер отд и личной надобности рабочего}
+\end{gather*}
+
+\begin{gather*}
+    t_\text{шт-к}=t_\text{шт}+\frac{T_\text{п-з}}{n}
+\end{gather*}
+
+n - размер патрии деталей
+
+$T_\text{п-з}$ - Подготовительно-заключительное время
+
+При партионной передаче длительность технологического цикла зависит от вида движения, партий предметов труда по операциям технологического процесса.
+
+Виды движения: последовательные, параллельно-последовательные и параллельные.
+
+\subsection{Последовательный вид движения}
+
+\subsubsection{Технологический цикл при последовательном движении}
+
+При последовательном движении каждая следующая операция наччинается после полного завершения предыдущей операции над всей обработочной партией.
+
+Время выполнения i-ой операции над обработочной партией называется операционным циклом i-ой операции. Непрерывные операционные циклы можно рассчитать по формуле:
+
+\begin{gather*}
+    T_\text{оп i}=k\frac{t_i}{c_i}
+\end{gather*}
+
+\begin{gather*}
+    T_\text{техн посл}=\sum_{i=1}^{m}T_\text{оп i}=\sum_{i=1}^{m}\frac{t_i}{c_i}=n(\ldots)=\text{результат (ед изм)}
+\end{gather*}
+
+\subsubsection{Производственный цикл при последовательном виде движения}
+
+пропуск фото
+
+\begin{gather*}
+    T_\text{пр}=\frac{T_\text{техн}+\sum_{i=1}^{m}t_\text{м.о.}}{T_\text{см}\cdot f\cdot k_\text{реп}}\\
+    k_\text{реп}=\frac{k_\text{раб дн}}{k_\text{кал дн}}
+\end{gather*}
+
+\end{document}

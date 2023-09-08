@@ -41,7 +41,12 @@
 
 \usepackage{ragged2e}
 
-\setlength{\RaggedRightParindent}{\parindent}
+% \setlength{\RaggedRightParindent}{\parindent}
+
+\newlength{\normalparindent}
+\setlength{\normalparindent}{\parindent}
+\raggedright
+\setlength{\parindent}{\normalparindent}
 
 \newcommand{\pic}[3]{
 	\begin{figure}[#1]
@@ -54,7 +59,7 @@
 
 \begin{document}
 
-\RaggedRight
+% \RaggedRight
 
 % \emergencystretch 3em
 
@@ -64,6 +69,7 @@
 
         \Huge
         \textbf{Организация и планирование производства}
+        \textbf{Лекции}
 
         \vspace{0.5cm}
         \LARGE
@@ -85,7 +91,7 @@
         \vfill
 
         Чекановский Сергей\\
-        РЛ1-102
+        РЛ1-112
 
         \vspace{0.8cm}
 

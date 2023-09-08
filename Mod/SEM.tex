@@ -1,0 +1,190 @@
+\documentclass[14pt,a4paper,oneside]{extarticle}
+\usepackage{amsmath}\usepackage{amsfonts}\usepackage{amssymb}\usepackage{pgfplots}
+\usepackage{setspace}\usepackage{mathtools}\usepackage{tikz}\usetikzlibrary{arrows}
+\usepackage[left=3cm,right=1cm, top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{enumitem}
+\makeatletter\AddEnumerateCounter{\asbuk}{\russian@alph}{щ}\makeatother
+\DeclareMathOperator{\sinc}{sinc}\pgfplotsset{compat=1.18}\usepackage{setspace}
+% \onehalfspacing
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\pict}{\[\tb{Картинка}\]}
+\newcommand{\fo}{\[\tb{Формула}\]}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit, automata}
+\usepackage{bookmark}
+\usepackage{blindtext}
+% \setcounter{secnumdepth}{0}
+\usepackage{graphicx}
+\graphicspath{ {./imgs/} }
+\usepackage{relsize}
+\usepackage{indentfirst}
+\usepackage{float}
+% \usepackage{sectsty}
+
+% \sectionfont{\large}
+% \subsectionfont{\normalsize}
+% \subsubsectionfont{\normalsize}
+% \paragraphfont{\normalsize}
+
+\usepackage{amsthm}
+\newtheorem*{theorem}{Теорема}
+% \makeatletter
+% \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+% \makeatother
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
+
+\usepackage{ragged2e}
+
+% \setlength{\RaggedRightParindent}{\parindent}
+
+\newcommand{\pic}[3]{
+	\begin{figure}[#1]
+		\begin{center}
+			\includegraphics[width=#2]{imgs/#3}
+		\end{center}
+		% \vspace{-5mm}\caption{#4}\label{fig:#5}
+	\end{figure}
+}
+
+\newlength{\normalparindent}
+\setlength{\normalparindent}{\parindent}
+\raggedright
+\setlength{\parindent}{\normalparindent}
+
+\begin{document}
+
+% \RaggedRight
+
+% \emergencystretch 3em
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+
+        \Huge
+        \textbf{Моделирование радиотехнических систем}
+
+
+
+        \vspace{1.5cm}
+
+        \vfill
+        \Huge
+        \textbf{Семинары}\\
+        \vspace{0.5cm}
+        \LARGE
+        Преподаватель: Исаев И.Д.
+        \vfill
+
+        \LARGE
+        Чекановский Сергей\\
+        РЛ1-112
+
+        \vspace{0.8cm}
+
+        % \includegraphics[width=0.4\textwidth]{university}
+
+        \Large
+        МГТУ им. Н.Э. Баумана
+
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\clearpage
+
+\section{Семинар 1}
+
+\subsection{Моделирование детерминированных функций}
+
+\begin{gather*}
+    \sin(at)=u_1(t)\\
+    \cos(at)=u_2(t)\\
+    u_1[n]=\sin(an\Delta t)=\sin(a(n+1-1)\Delta t)=\\
+    =\sin(a(n+1))
+\end{gather*}
+
+пропуск
+
+\begin{gather*}
+    =u_1[n-1]\cdot c_1+u_2[n-1]\cdot c_2\\
+    u_1[0]=0\\
+    u_2[0]=1\\
+    u_2[n]=\cos(a\Delta t(n-1))\cos(a\Delta t)-\sin(a\Delta t(n-1))\sin(a\Delta t)=\\
+    =u_2[n-1]c_1-u_1[n-1]c_2\\
+    u_1[0]=0\\
+    u_2[0]=1
+\end{gather*}
+
+\subsection{Моделирование случайных чисел в диапазоне 0...1}
+
+\begin{gather*}
+    m_x=\int\displaylimits_{-\infty}^{+\infty} x\cdot w(x)dx\\
+    m=\int\displaylimits_{a}^{b}x\frac{1}{b-a}dx=\frac{1}{b-a}\frac{x^2}{2}|_a^b=\frac{b^2-a^2}{2(b-a)}=\frac{a+b}{2}
+\end{gather*}
+
+\begin{gather*}
+    F(X)=\int\displaylimits_{a}^{x}w(y)dy\\
+    w(y)=\frac{dF(y)}{dy}\\
+\end{gather*}
+
+\begin{enumerate}
+    \item $\int\displaylimits_{-\infty}^{+\infty}w(y)dy=1$
+    \item $w(y)\geq 0$
+    \item $F(y)$ - неубывающая
+    \item $0\leq F(y)\leq 1$
+\end{enumerate}
+
+\subsection{Метод преобразования, обратного функции распределения}
+
+\begin{gather*}
+    x=a+(b-a)\underbrace{F(y)}_{CB \forall 3P}
+\end{gather*}
+
+x - равномерная случайная величина в $[a,b]$
+
+\begin{gather*}
+    w(y)=w(x)\left\lvert\frac{dx}{dy} \right\rvert *\\
+    \frac{dx}{dy}=(b-a)\frac{dF(y)}{dy}=(b-a)w(y)\\
+    \frac{w(y)}{w(x)}=(b-a)w(y)\Longrightarrow w(x) = \frac{1}{b-a}
+\end{gather*}
+
+\begin{gather*}
+    w(y)=\frac{y}{\sigma^2}e^{-\frac{y^2}{2\sigma^2}}\\
+    y\in[0;+\infty)\\
+    F(y)=\int\displaylimits_{0}^{y}\frac{x}{\sigma^2}e^{-\frac{x^2}{2\sigma^2}}dx=-\int\displaylimits_{0}^{y}e^{-\frac{x^2}{2\sigma^2}}d(-\frac{x^2}{2\sigma^2})=e^{-\frac{x^2}{2\sigma^2}}\lvert_y^0=1-e^{-\frac{y^2}{2\sigma^2}}=x\\
+    1-x=e^{-\frac{y^2}{2\sigma^2}}\\
+    -\frac{y^2}{2\sigma^2}=\ln(1-x)\\
+    y=\sqrt{-2\sigma^2\cdot\ln(1-x)}=\sigma\sqrt{-2\ln(x)}\\
+\end{gather*}
+
+\begin{gather*}
+    w(y)=\lambda e^{-\lambda y}\\
+    F(y)=\int\displaylimits_{0}^{y}\lambda e^{-\lambda x}dx=\frac{1}{\lambda}\int\displaylimits_{0}^{y}\lambda e^{-\lambda x}d(-\lambda x)=\\
+    =-\frac{1}{\lambda}\cdot\lambda\cdot e^{-\lambda x}|_0^y=-(e^{-\lambda y}-e^0)=1-e^{-\lambda y}=x \\
+    1-e^{-\lambda y}=x\Longrightarrow e^{-\lambda y}=1-x\Longrightarrow -\lambda y= C_n(1-x)\Longrightarrow\\
+    \Longrightarrow y=-\frac{1}{\lambda}\ln(1-x)=-\frac{1}{\lambda}\ln(x)
+\end{gather*}
+
+\begin{gather*}
+    w(y)=\frac{1}{\pi a\sqrt{1-\left(\frac{y}{a}\right)^2 }}\\
+    F(y)=\int\displaylimits_{-a}^{y}\frac{1}{\pi a\sqrt{1-\left(\frac{y}{a}\right)^2 }}dx=\frac{a}{\pi a}\int\displaylimits_{-a}^{y}\frac{1}{\sqrt{1-\left(\frac{y}{a}\right)^2 }}d\frac{x}{a}=\\
+    =\frac{1}{\pi}\arcsin\left(\frac{x}{a}\right)|_{-a}^{y}=\frac{1}{\pi}\left(\arcsin\frac{y}{a}-\arcsin(-1)\right)=\\
+    =\frac{1}{\pi}\left(\arcsin\left(\frac{y}{a}-\frac{\pi}{2}\right)\right)=\frac{1}{\pi}\arcsin\frac{y}{a}+\frac{1}{2}=x\\
+    y=a\cdot\sin\left(\underbrace{\pi\left(x-\frac{1}{2}\right) }_{-1\ldots1} \right),\text{ } -\frac{\pi}{2}\ldots\frac{\pi}{2}
+\end{gather*}
+
+Нельзя применить когда функция аналитически не выражается.
+
+\subsection{Логнормальный}
+
+Пропуск см фото
+
+\end{document}

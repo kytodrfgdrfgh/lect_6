@@ -1,0 +1,104 @@
+\documentclass[14pt,a4paper,oneside]{extarticle}
+\usepackage{amsmath}\usepackage{amsfonts}\usepackage{amssymb}\usepackage{pgfplots}
+\usepackage{setspace}\usepackage{mathtools}\usepackage{tikz}\usetikzlibrary{arrows}
+\usepackage[left=3cm,right=1cm, top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{enumitem}
+\makeatletter\AddEnumerateCounter{\asbuk}{\russian@alph}{щ}\makeatother
+\DeclareMathOperator{\sinc}{sinc}\pgfplotsset{compat=1.18}\usepackage{setspace}
+% \onehalfspacing
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\pict}{\[\tb{Картинка}\]}
+\newcommand{\fo}{\[\tb{Формула}\]}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit, automata}
+\usepackage{bookmark}
+\usepackage{blindtext}
+% \setcounter{secnumdepth}{0}
+\usepackage{graphicx}
+\graphicspath{ {./imgs/} }
+\usepackage{relsize}
+\usepackage{indentfirst}
+\usepackage{float}
+% \usepackage{sectsty}
+
+% \sectionfont{\large}
+% \subsectionfont{\normalsize}
+% \subsubsectionfont{\normalsize}
+% \paragraphfont{\normalsize}
+
+\usepackage{amsthm}
+\newtheorem*{theorem}{Теорема}
+% \makeatletter
+% \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+% \makeatother
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
+
+\usepackage{ragged2e}
+
+% \setlength{\RaggedRightParindent}{\parindent}
+
+\newcommand{\pic}[3]{
+	\begin{figure}[#1]
+		\begin{center}
+			\includegraphics[width=#2]{imgs/#3}
+		\end{center}
+		% \vspace{-5mm}\caption{#4}\label{fig:#5}
+	\end{figure}
+}
+
+\newlength{\normalparindent}
+\setlength{\normalparindent}{\parindent}
+\raggedright
+\setlength{\parindent}{\normalparindent}
+
+\begin{document}
+
+% \RaggedRight
+
+% \emergencystretch 3em
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+
+        \Huge
+        \textbf{Моделирование радиотехнических систем}
+        \textbf{Семинары}
+
+        \vspace{0.5cm}
+        \LARGE
+        Преподаватель: Нефедова Ю.С.
+
+
+        \vspace{1.5cm}
+
+        \vfill
+
+        Чекановский Сергей\\
+        РЛ1-112
+
+        \vspace{0.8cm}
+
+        % \includegraphics[width=0.4\textwidth]{university}
+
+        \Large
+        МГТУ им. Н.Э. Баумана
+
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\clearpage
+
+\section{Лекция 1}
+
+\textbf{}
+
+\end{document}
