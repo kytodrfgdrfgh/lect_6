@@ -144,28 +144,49 @@
 
 \subsection{Метод преобразования, обратного функции распределения}
 
-Чтобы получить случайное распределение величины из из случайной величины, равномерно распределенной на $[0;1]$
+Нужен чтобы получить случайное распределение величины из из случайной величины, равномерно распределенной на $[0;1]$
 
 \begin{gather*}
-    x=a+(b-a)\cdot F\left(\underbrace{y}_{\text{СлВел, } \forall \text{ 3акPаспр}}\right)
+    x=a+(b-a)\cdot F\left({y}\right)
 \end{gather*}
 
-x - равномерная случайная величина в $[a,b]$
+$y$ - случайная величина с произвольным законом распределения
+
+$x$ - равномерная случайная величина в $[a,b]$
 
 \begin{gather*}
     w(y)=w(x)\left\lvert\frac{dx}{dy} \right\rvert \\\text{ - переход от 1 СВ к другой.}\\
     \frac{dx}{dy}=(b-a)\frac{dF(y)}{dy}=(b-a)w(y)\\
-    \frac{w(y)}{w(x)}=(b-a)w(y)\Longrightarrow w(x) = \frac{1}{b-a} \\\text{- равномерный закон}
+    \frac{w(y)}{w(x)}=(b-a)w(y)\Longrightarrow w(x) = \frac{1}{b-a} \\\text{- равномерный закон}\\
+    x=a+(b-a)F(y)\Rightarrow y=\underbrace{F^{-1}\left(\frac{x-a}{b-a}\right) }_{\text{Ф-я, обр. ФР}}
 \end{gather*}
 
+При $a=0,b=1$:
+
+\[y=F^{-1}(x)\]
+
+$x$ - равномерный на $[0;1]$
+
+\begin{enumerate}
+    \item $w(y)$ - находим $F(y)$
+    \item $F(y)=x$
+    \item $y=F^{-1}(x)$ - алгоритм моделирования СВ $y$
+\end{enumerate}
+
+\subsubsection{Распределение Рэлея}
+
 \begin{gather*}
-    w(y)=\frac{y}{\sigma^2}e^{-\frac{y^2}{2\sigma^2}}\\
+    w(y)=\frac{y}{\sigma^2}e^{-\frac{y^2}{2\sigma^2}} \text{, }
     y\in[0;+\infty)\\
-    F(y)=\int\displaylimits_{0}^{y}\frac{x}{\sigma^2}e^{-\frac{x^2}{2\sigma^2}}dx=-\int\displaylimits_{0}^{y}e^{-\frac{x^2}{2\sigma^2}}d(-\frac{x^2}{2\sigma^2})=e^{-\frac{x^2}{2\sigma^2}}\lvert_y^0=1-e^{-\frac{y^2}{2\sigma^2}}=x\\
+    F(y)=\int\displaylimits_{0}^{y}\frac{x}{\sigma^2}e^{-\frac{x^2}{2\sigma^2}}dx=-\int\displaylimits_{0}^{y}e^{-\frac{x^2}{2\sigma^2}}d(-\frac{x^2}{2\sigma^2})=\left. e^{-\frac{x^2}{2\sigma^2}}\right\vert_y^0=1-e^{-\frac{y^2}{2\sigma^2}}=x\\
     1-x=e^{-\frac{y^2}{2\sigma^2}}\\
     -\frac{y^2}{2\sigma^2}=\ln(1-x)\\
-    y=\sqrt{-2\sigma^2\cdot\ln(1-x)}=\sigma\sqrt{-2\ln(x)}\\
+    y=\sqrt{-2\sigma^2\cdot\ln(1-x)}=\sigma\sqrt{-2\ln(1-x)}\\
 \end{gather*}
+
+Графики $w(x)$ и $w(1-x)$ одинаковы $\Longrightarrow y=\sigma\sqrt{-2\ln(x)}$
+
+\subsubsection{Еще пример}
 
 \begin{gather*}
     w(y)=\lambda e^{-\lambda y}\\
@@ -175,18 +196,55 @@ x - равномерная случайная величина в $[a,b]$
     \Longrightarrow y=-\frac{1}{\lambda}\ln(1-x)=-\frac{1}{\lambda}\ln(x)
 \end{gather*}
 
+\subsubsection{Арксинусный закон}
+
 \begin{gather*}
-    w(y)=\frac{1}{\pi a\sqrt{1-\left(\frac{y}{a}\right)^2 }}\\
+    w(y)=\frac{1}{\pi a\sqrt{1-\left(\frac{y}{a}\right)^2 }}\text{, } -a<y<a\\
     F(y)=\int\displaylimits_{-a}^{y}\frac{1}{\pi a\sqrt{1-\left(\frac{y}{a}\right)^2 }}dx=\frac{a}{\pi a}\int\displaylimits_{-a}^{y}\frac{1}{\sqrt{1-\left(\frac{y}{a}\right)^2 }}d\frac{x}{a}=\\
     =\frac{1}{\pi}\arcsin\left(\frac{x}{a}\right)|_{-a}^{y}=\frac{1}{\pi}\left(\arcsin\frac{y}{a}-\arcsin(-1)\right)=\\
     =\frac{1}{\pi}\left(\arcsin\left(\frac{y}{a}-\frac{\pi}{2}\right)\right)=\frac{1}{\pi}\arcsin\frac{y}{a}+\frac{1}{2}=x\\
-    y=a\cdot\sin\left(\underbrace{\pi\left(x-\frac{1}{2}\right) }_{-1\ldots1} \right),\text{ } -\frac{\pi}{2}\ldots\frac{\pi}{2}
+    y=a\cdot\sin\left(\underbrace{\pi\left(x-\frac{1}{2}\right) }_{-1\ldots1} \right),\text{ } -\frac{\pi}{2}\ldots\frac{\pi}{2}\\
+    \pi\left(x-\frac{1}{2}\right) \longrightarrow 2\pi x \Longrightarrow y=a\cdot\sin(2\pi x)
 \end{gather*}
 
-Нельзя применить когда функция аналитически не выражается.
+Не любую СВ можно смоделировать: если функция, обратная ФР не выражается аналитически - нужны численные методы.
 
-\subsection{Логнормальный}
+\subsubsection{Логнормальный закон распределения}
 
-Пропуск см фото
+\begin{gather*}
+    w(y)=\frac{1}{\sqrt{2\pi}\sigma y}e^{\frac{-(\ln(y)-m)^2}{2\sigma^2}}\\
+    y=e^{\sigma x+m}
+\end{gather*}
+
+$x$ - не равномерная, а нормальная СВ с $m=0$ и $D=1$.
+
+\begin{gather*}
+    w(y)=w(x)\left\lvert \frac{d y}{d x} \right\rvert
+\end{gather*}
+
+$x$ - нормальная СВ
+
+$y$ - логнормальная СВ
+
+\begin{gather*}
+    \frac{dy}{dx}=\frac{d\left( e^{\sigma x+m} \right)}{dx}=\sigma\cdot e^{\sigma x+m} \Longrightarrow \frac{d x}{d y}=\frac{1}{\sigma e^{\sigma x+m}}
+\end{gather*}
+
+\begin{gather*}
+    \left.
+    \begin{array}{cc}
+        w(y) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\frac{1}{\sigma e^{\sigma x+m}} \\
+        y=\sigma e^{\sigma x+m}\Longrightarrow x=\frac{\ln(y)-m}{\sigma}
+    \end{array}
+    \right\} \Longrightarrow w(y)=\frac{1}{\sqrt{2\pi}\sigma y}e^{-\frac{\left(\frac{\ln(y)-m}{\sigma}\right)^2 }{2}}=\\=\frac{1}{\sqrt{2\pi}\sigma y}e^{-\frac{(\ln(y)-m)^2}{2\sigma^2}},\text{ } y>0
+\end{gather*}
+
+2 Способа моделирования нормальной СВ:
+
+\begin{enumerate}
+    \item На основе центральной предельной теоремы
+    \item $y=\underbrace{y_1}_{\text{Рэлей}} \cdot \underbrace{y_2}_{\text{Арксинус}} $
+\end{enumerate}
+
 
 \end{document}
